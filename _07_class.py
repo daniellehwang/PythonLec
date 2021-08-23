@@ -42,18 +42,134 @@
 # def div(a,b):
 #     return a/b
 
-class Arith:
-    def add(self, a, b):
-        return a+b
-    def sub(self, a, b):
-        return a-b
-    def mul(self, a, b):
-        return a*b
-    def div(self, a, b):
-        return a/b
+# class Arith:
+#     def add(self, a, b):
+#         return a+b
+#     def sub(self, a, b):
+#         return a-b
+#     def mul(self, a, b):
+#         return a*b
+#     def div(self, a, b):
+#         return a/b
+#
+# arith = Arith() #객체 생성
+# print(arith.add(10, 20))
+# print(arith.sub(10, 20))
+# print(arith.mul(10, 20))
+# print(arith.div(10, 20))
+#
+# # 3) 클래스 생성자 = __init__
+# # 크래스 내의 함수는 메서드, 함수는 메모리에 한번 올라가지만 객체는 따로 할당이 된다.
+# # 클래스에 파생된 객체들. hong, park. kim, hwang
+# # _init_과 showinfo는 모든 객체들이 공유한다
+# # self.name과 age는
+# # self=  (c++, c#)this 같다
+# class Human:
+#     def __init__(self, name, age):
+#         print("self=", self)
+#         self.name = name
+#         self.age = age
+#     def showInfo(self):
+#         print("name:", self.name)
+#         print("age:", self.age)
+#
+# # 객체(홍, 박,,,) = 클래스
+# # 셀프안에는 해당되는 객체가 들어간다.
+# hong = Human("홍다연", 26) #Human:__init__(hong, "홍다연", 26)
+# print("hong=", hong)
+# park = Human("박재횽", 32) #Human:__init__(hong, "박재횽", 26)
+# print("hong=", park)
+# kim = Human("김도형", 26) #Human:__init__(hong, "김도형", 32)
+# print("hong=", kim)
+# hwang = Human("황도경", 26) #Human:__init__(hong, "황도경", 26)
+# print("hong=", hwang)
+#
+# hong.showInfo() # Human:showInfo(hong)
+# park.showInfo() # Human:showInfo(park)
+# kim.showInfo() # Human:showInfo(kim)
+# hwang.showInfo() # Human:showInfo(hwang)
 
-arith = Arith() #객체 생성
-print(arith.add(10, 20))
-print(arith.sub(10, 20))
-print(arith.mul(10, 20))
-print(arith.div(10, 20))
+# 4) 클래스 만들기
+
+# class Dog:
+#     def __init__(self, name, color):
+#         print(name, "생성자 호출~")
+#         self.name = name
+#         self.color = color
+#     def __del__(self):
+#         print(self.name, " 소멸자 호출")
+#     def play(self):
+#         print("{0}색을 가진 {1}가 즐겁게 뛰어다닌다".format(
+#             self.color, self.name))
+#
+# pipi = Dog("삐삐", "White")
+# duggu = Dog("덕구", "Black")
+# mery = Dog("메리", "Yellow")
+#
+# print(pipi.name, pipi.color)
+# print(duggu.name, duggu.color)
+# print(mery.name, mery.color)
+#
+# pipi.play()
+# duggu.play()
+# mery.play()
+
+# 5) 클래스의 재사용성 : 포함
+#다른 클래스를 내안에 필드변수로 저장했다가 호출하여 함수를 사용하는것= 포함
+#pc라는 매개변수
+# class Computer:
+#     def __init__(self, cpu, gpu, ram):
+#         self.cpu = cpu
+#         self.gpu = gpu
+#         self.ram = ram
+#     def intro(self):
+#         print("cpu:", self.cpu)
+#         print("gpu:", self.gpu)
+#         print("ram:", self.ram)
+#
+# class Human:
+#     def __init__(self, name, age, pc):
+#         self.name = name
+#         self.age = age
+#         self.pc = pc
+#     def intro(self):
+#         print("name:", self.name)
+#         print("age:", self.age)
+#         self.pc.intro()
+#         print()
+#
+# albert = Human("알버트", 24, Computer("i7-9700", "RTX-2080", "32G"))
+# albert.intro()
+# albert.pc = Computer("i5-5600", "GTX-1060", "16G")
+# albert.intro()
+
+# 6) 클래스의 재사용성 : 상속
+#super= 부모에서 구현한 생성자를 사용하겠다
+#
+class Human:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def intro(self):
+        print("name:", self.name)
+        print("age: ", self.age)
+
+class WhiteHuman(Human):
+    pass
+
+# wh = WhiteHuman("백수", 24)
+# wh.intro()
+
+class Student(Human):
+    def __init__(self, name, age, stnum):
+        super().__init__(name, age)
+        self.stnum = stnum
+    def intro(self):
+        super().intro()
+        print("stnum:", self.stnum)
+    def study(self):
+        print(self.name, "학생이 열심히 공부한다")
+
+st0 = Student("홍길동", 33, "1024")
+st0.intro()
+st0.study()
