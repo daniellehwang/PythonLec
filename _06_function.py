@@ -83,14 +83,24 @@
 # ***
 # ****
 # *****
-
+# def star(num):
+#     for i in range(0, num):
+#         print("*" * (i +1))
+#
+# star(5)
 # 7) 별 찍기 함수 제작
 # star(5) => 아래처럼 출력
 # o
 # *o
 # **o
 # ***o
+def star(num):
+    for i in range(0, num):
+        print("*" * i, end = "")
+        print("o")
+    print()
 
+star(5)
 # 8) return 이란?
 # def add(a,b):
 #     """
@@ -146,3 +156,14 @@ print(result)
 # minute => 1
 # second => 12
 
+def hmsTime(total_sec):
+    hour = total_sec // 3600 # 몫(시간)
+    tempSec = total_sec % 3600 # 나머지 초
+    minute = tempSec // 60 # 몫 (분)
+    second = tempSec % 60  #나머지 초(분계산후)
+    return hour, minute, second
+
+h, m, s = hmsTime(3672)
+print("{0}시간 {1}분 {2}초".format(h,m,s))
+h, m, s = hmsTime(360)
+print("{0}시간 {1}분 {2}초".format(h,m,s))

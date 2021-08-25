@@ -83,6 +83,10 @@
 # 2중  for 문 사용
 # 9) 구구단 전체를 출력하세요
 # 2~9단까지
+for i in range(2,10):
+    for j in range(1,10):
+        print("{0}x{1} ={2}".format(j, i, i*j)), end="\t")
+    print()
 #
 # 10) 구구단 전체를 출력하는데 각 단을 세로로 출력하세요
 
