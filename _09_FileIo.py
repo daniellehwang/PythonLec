@@ -20,12 +20,12 @@
 # f.close()                     #스트림 닫기
 #
 # 5) 파일에 기록하기
-# f = open("새파일.txt", "w", encoding="utf-8")
-# for i in range(1,11):
-#     #data = str(i) + "번째 줄입니다\n"
-#     data = "{0}번째 줄입니다\n".format(i)
-#     f.write(data)
-# f.close()
+f = open("새파일.txt", "w", encoding="utf-8")
+for i in range(1,11):
+    #data = str(i) + "번째 줄입니다\n"
+    data = "{0}번째 줄입니다\n".format(i)
+    f.write(data)
+f.close()
 
 # 6) 파일을 1줄 읽어서 보여주기
 # f = open("새파일.txt", "r", encoding="utf-8")
